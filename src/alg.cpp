@@ -43,7 +43,8 @@ int countPairs3(int *arr, int len, int value) {
                 break;
             }
           if (arr[i] + arr[index] > value) ending = i;
-          else starting = i;
+          else
+            starting = i;
         }
     }
     return kol;
