@@ -29,18 +29,20 @@ int countPairs3(int *arr, int len, int value) {
         while (starting < ending-1) {
             int i = (starting + ending) / 2;
             if ((arr[i]+arr[index] == value) && i != index) {
+              kol++;
+              int j = i + 1;
+              while (arr[index] + arr[j] == value &&
+                     j < ending && i != index) {
                 kol++;
-                for (int j = i + 1; (j < ending)
-                     && (arr[j] + arr[index] == value)
-                     && (i != index); j++) {
-                    kol++;
+                j++;
                 }
-                for (int j = i - 1; (j > starting)
-                     && (arr[j] + arr[index] == value)
-                     &&  (i != index); j--) {
-                    kol++;
+              int j = i - 1;
+              while (arr[index] + arr[j] == value &&
+                     j > starting && i != index) {
+                kol++;
+                j--;
                 }
-                break;
+              break;
             }
             if (arr[i] + arr[index] > value) ending = i;
             if (arr[i] + arr[index] < value) starting = i;
